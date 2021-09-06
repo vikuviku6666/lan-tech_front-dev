@@ -6,22 +6,19 @@ import filterProduct from '../utils/filterProduct';
 import sortProduct from '../utils/sortProduct';
 import Pagination from '../components/Pagination';
 
-
 const Products = () => {
 	const { loading, pages, items, setCurrentPage, filter, sort } = useTable(
 		'./data/products.json',
 		30
 	);
 
-  const paginate = (currentPage: number) => setCurrentPage(currentPage);
-	// console.log('PRODUCTS.tsx', pages, currentPage);
-	// console.log('PRODUCTS.tsx', items);
+	const paginate = (currentPage: number) => setCurrentPage(currentPage);
+
 	return (
 		<div>
 			{loading && <p>loading...</p>}
 			<Filters
 				onFilter={(filters) => {
-					//console.log('products.tsx',filters);
 					filter(filterProduct(filters));
 				}}
 			/>
@@ -41,7 +38,7 @@ const Products = () => {
 					{
 						name: 'id',
 						description: '#',
-						width: 64,
+						width: 84,
 					},
 					{
 						name: 'name',
@@ -50,17 +47,17 @@ const Products = () => {
 					{
 						name: 'price',
 						description: 'Price',
-						width: 64,
+						width: 100,
 					},
 					{
 						name: 'quantity',
 						description: 'Quantity',
-						width: 64,
+						width: 150,
 					},
 				]}
 			/>
-			<br/>
-			<Pagination pages={pages} paginate={ paginate}/>
+			<br />
+			<Pagination pages={pages} paginate={paginate} />
 		</div>
 	);
 };

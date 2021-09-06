@@ -12,22 +12,16 @@ const useTable = (dataUrl: string, itemsPerPage: number = ITEMS_PER_PAGE) => {
 
 	const filter = useCallback(
 		(fn: (item: Dict, index: number) => boolean): void => {
-			//console.log(fn());
 			setItems(data.filter(fn));
-			//console.log('useTable.ts-filterfn, 17', items);
 		},
 		[data]
 	);
 
 	const sort = useCallback(
 		(fn: (left: Dict, right: Dict) => number): void => {
-			//console.log('useTable.ts',fn);
-			//debugger;
-			setItems(data.sort(fn));
-			//console.log('useTable.ts-data', data);
-		//	console.log('useTable.ts-sortfn-28', items);
+			setItems([...items.sort(fn)]);
 		},
-		[data]
+		[items]
 	);
 
 	useEffect(() => {
@@ -48,8 +42,7 @@ const useTable = (dataUrl: string, itemsPerPage: number = ITEMS_PER_PAGE) => {
 		// todo: fix typescript error
 		setPages(Math.ceil(items.length / itemsPerPage));
 	}, [items, itemsPerPage]);
-	//console.log('useTable.ts-data-51', data);
-	//console.log('useTable.ts-items-52', items);
+
 	return {
 		loading,
 		pages,

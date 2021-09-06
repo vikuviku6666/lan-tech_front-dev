@@ -3,7 +3,6 @@ import { Dict, FilterProps } from '../types';
 
 const Filters = ({ onFilter }: FilterProps) => {
 	const [filters, setFilters] = useState<Dict>({});
-	//console.log('Filters.tsx: filters', filters);
 
 	const getValue = useCallback(
 		(name: string): any => {
