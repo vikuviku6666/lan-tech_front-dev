@@ -3,8 +3,8 @@ import useTable from "../hooks/useTable";
 
 describe("useTable hook", () => {
   const { result } = renderHook(() => useTable("./data/products.json", 30));
-
-  it("should change page", () => {
+  
+it("should change page", () => { 
     act(() => {
       result.current.setCurrentPage(3);
     });
@@ -14,5 +14,7 @@ describe("useTable hook", () => {
 
   it("start fetching data", () => {
     // todo: test if starts fetching
+    expect(result.current.items).toStrictEqual([]);
+    
   });
 });
