@@ -4,7 +4,7 @@ const data = [
   {
     id: 1,
     name: "test",
-    price: 10,
+    price: 6,
     quantity: 6,
   },
   {
@@ -17,10 +17,18 @@ const data = [
 
 describe("filter products", () => {
   // todo: fix test
-  it("filter by name", () => {
+  it("filter by name-length", () => {
     expect(data.filter(filterProduct({ name: "Test" })).length).toBe(1);
   });
-
+ it('filter by name', () => {
+		expect(data.filter(filterProduct({ name: 'foobar' }))).toStrictEqual([data[1]]);
+ });
+ it('filter by price', () => {
+		expect(data.filter(filterProduct({ price: 6 }))).toStrictEqual([data[0], data[1]]);
+ });
+ it('filter by name and quantity', () => {
+		expect(data.filter(filterProduct({ price: 6, quantity: 20 }))).toStrictEqual([data[0], data[1]]);
+ });
   // todo: test multi-filters e.g. by `name` and `price`
   // todo: test multi-filters
 

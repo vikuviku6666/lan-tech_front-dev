@@ -19,6 +19,7 @@ const Products = () => {
 			{loading && <p>loading...</p>}
 			<Filters
 				onFilter={(filters) => {
+					console.log(filters);
 					filter(filterProduct(filters));
 				}}
 			/>
